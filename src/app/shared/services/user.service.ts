@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders , HttpParams} from '@angular/common/http';
+import { User } from '../models/user.class';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,22 @@ export class UserService {
   readonly CLIENT_SECRET = 'Zv19oWmm416sTyjWT5Sx2r1gRwjWrXU3P5dWledQpYjxEvavS58SPtz03M8wvsgajaVLhcimmJIUUYUDad06V6HQosmPoj3TPRNjg7bgniQlooIwyFWfz8KfkM5Tdh7R';
 
   constructor(private http:HttpClient) { }
+
+
+  registerUser(user:User){
+    const body : User = {
+      username: user.username,
+      email: user.email,
+      password1: user.password1,
+      password2: user.password2,
+      referral_code: user.referral_code,
+      phone_number: user.phone_number,
+      full_name: user.full_name,
+      device_details: user.device_details,
+      location: user.location
+    }
+    return this.http.post(this.BASE_URL+'/api/v1/users/registration/',body);
+  }
 
 
   userAuthentication(username:string,password:string){
