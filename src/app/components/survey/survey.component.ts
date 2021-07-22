@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-survey',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurveyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  viewForm(){
+    this.userService.getSurveyFormData().subscribe(
+      (data : any) => {
+        console.log(data.forms[0].pages)
+      }
+    )
   }
 
 }
