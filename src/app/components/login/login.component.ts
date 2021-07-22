@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       location: ''
     }
   }
-
   login(username:string,password:string){
     this.userService.userAuthentication(username,password)
       .subscribe((data:any) =>{
@@ -50,7 +49,6 @@ export class LoginComponent implements OnInit {
           this.isLoginError = true;
           console.log(err);
       })
-
   }
 
 }
