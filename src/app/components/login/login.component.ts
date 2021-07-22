@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit {
       .subscribe((data:any) =>{
           localStorage.setItem('userToken', data.access_token);
           this.router.navigate(['']);
-          console.log(data);
+          // console.log(data);
       },
       (err :HttpErrorResponse) => {
           this.isLoginError = true;
-          console.log(err);
+          // console.log(err);
       })
   }
 
