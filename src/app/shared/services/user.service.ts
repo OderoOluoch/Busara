@@ -41,4 +41,18 @@ export class UserService {
       return this.http.post(this.BASE_URL +'/api/v1/oauth/token/',body,{headers:requestHeader})
   
     }
+
+    getLogedInUser(){
+      return  this.http.get(this.BASE_URL+'/api/v1/users/current-user',{
+         headers: new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})
+      })
+    }
+
+    getSurveyFormData(){
+      let params = new HttpParams().set('node_type', 'Both');
+      return  this.http.get(this.BASE_URL+'/api/v1/recruitment/forms/',{
+          params: params,
+         headers: new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})
+      })
+    }
 }
