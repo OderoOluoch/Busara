@@ -1,1 +1,59 @@
-<button (click)="viewForm()">Click Me</button> 
+<div class="container">
+  <div class="card my-5 shadow bg-white rounded">
+    <div class="card-header bg-dark text-white">
+      <h1 class="mx-4 mt-4">My Profile column_match</h1>
+    </div>
+    <form [formGroup]="surveyForm" (submit)="submitSurveyData()">
+      <div class="row px-5 py-4">
+        <div class="col-md-6">
+          <div class="mb-3" *ngFor="let pageOne of formPageOne">
+            <label  class="form-label">
+              {{ pageOne.text }}</label
+            >
+            <input
+              formControlName="{{ pageOne.column_match }}"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3" *ngFor="let pageTwo of formPageTwo">
+            <div class="mb-3">
+              <select
+              formControlName="{{pageTwo.column_match}}"
+                class="form-select"
+                class="form-control"
+                aria-label="Default select example"
+              >
+                <option
+                  *ngFor="let level of formEducation"
+                  value="{{ level.id }}"
+                >
+                  {{ level.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <select
+              formControlName="{{pageTwo.column_match}}"
+                class="form-select"
+                class="form-control"
+                aria-label="Default select example"
+              >
+                <option
+                  *ngFor="let gender of formGender"
+                  value="{{ gender.id }}"
+                >
+                  {{ gender.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
